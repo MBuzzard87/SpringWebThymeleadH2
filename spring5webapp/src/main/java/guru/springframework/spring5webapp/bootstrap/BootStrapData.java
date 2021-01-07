@@ -32,6 +32,11 @@ public class BootStrapData implements CommandLineRunner {
         viz.setAddress("USA");
         publisherRepository.save(viz);
 
+        Publisher blackHorse = new Publisher();
+        blackHorse.setName("Black Horse");
+        blackHorse.setAddress("USA");
+        publisherRepository.save(blackHorse);
+
         System.out.println("Publisher count: " + publisherRepository.count());
 
 
@@ -51,12 +56,12 @@ public class BootStrapData implements CommandLineRunner {
         Book berserk = new Book("Berserk", "123456");
         kentaro.getBooks().add(berserk);
         berserk.getAuthors().add(kentaro);
-        berserk.setPublisher(viz);
-        viz.getBooks().add(berserk);
+        berserk.setPublisher(blackHorse);
+        blackHorse.getBooks().add(berserk);
 
         authorRepository.save(kentaro);
         bookRepository.save(berserk);
-        publisherRepository.save(viz);
+        publisherRepository.save(blackHorse);
 
 
         System.out.println("Started in Bootstrap");
